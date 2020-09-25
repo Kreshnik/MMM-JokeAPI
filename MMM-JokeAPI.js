@@ -48,7 +48,7 @@ Module.register("MMM-JokeAPI", {
         }
     },
     getJoke() {
-        fetch(`https://sv443.net/jokeapi/category/${this.config.category}`).then((response) => {
+        fetch(`https://sv443.net/jokeapi/v2/joke/${this.config.category}`).then((response) => {
             response.json().then((joke) => {
                 this.joke = joke;
                 this.updateDom();

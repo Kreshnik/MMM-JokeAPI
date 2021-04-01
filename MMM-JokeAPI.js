@@ -1,6 +1,8 @@
 Module.register("MMM-JokeAPI", {
     defaults: {
-        category: "Programming",
+        lang: "en",
+        category: "Any",
+        blacklistFlags: "",
         fetchInterval: 10 * 1000
     },
     getStyles() {
@@ -48,7 +50,7 @@ Module.register("MMM-JokeAPI", {
         }
     },
     getJoke() {
-        fetch(`https://sv443.net/jokeapi/v2/joke/${this.config.category}`).then((response) => {
+        fetch(`https://v2.jokeapi.dev/joke/${this.config.category}?lang=${this.config.lang}&blacklistFlags=${this.config.blacklistFlags}`).then((response) => {
             response.json().then((joke) => {
                 this.joke = joke;
                 this.updateDom();

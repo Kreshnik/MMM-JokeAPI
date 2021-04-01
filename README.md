@@ -9,7 +9,9 @@ This is a module for `MagicMirror²`; the purpose of the module is to show you j
     module: 'MMM-JokeAPI',
     position: 'middle_center',
     config: {
-        category: "Programming"
+        lang: "de",
+        category: "Programming,Miscellaneous",
+        blacklistFlags: "nsfw"
     }
 }
 ```

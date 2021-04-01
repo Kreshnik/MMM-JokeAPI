@@ -5,6 +5,7 @@ This is a module for `MagicMirror²`; the purpose of the module is to show you j
 1.  Clone this repository into your MagicMirror `modules` folder.
 2.  Edit your configuration file under `config/config.js` with the following configuration.
 ```
+// https://jokeapi.dev
 {
     module: 'MMM-JokeAPI',
     position: 'middle_center',

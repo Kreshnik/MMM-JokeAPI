@@ -1,6 +1,9 @@
 Module.register("MMM-JokeAPI", {
     defaults: {
-        category: "Programming",
+        lang: "en",
+        category: "Any",
+        blacklistFlags: "",
+        safeMode: false,
         fetchInterval: 10 * 1000
     },
     getStyles() {
@@ -48,11 +51,20 @@ Module.register("MMM-JokeAPI", {
         }
     },
     getJoke() {
-        fetch(`https://sv443.net/jokeapi/v2/joke/${this.config.category}`).then((response) => {
-            response.json().then((joke) => {
-                this.joke = joke;
-                this.updateDom();
+        if(this.config.safeMode){
+            fetch(`https://v2.jokeapi.dev/joke/${this.config.category}?lang=${this.config.lang}&blacklistFlags=${this.config.blacklistFlags}&safe-mode`).then((response) => {
+                response.json().then((joke) => {
+                    this.joke = joke;
+                    this.updateDom();
+                });
             });
-        });
+        } else {
+            fetch(`https://v2.jokeapi.dev/joke/${this.config.category}?lang=${this.config.lang}&blacklistFlags=${this.config.blacklistFlags}`).then((response) => {
+                response.json().then((joke) => {
+                    this.joke = joke;
+                    this.updateDom();
+                });
+            });
+        }
     }
 });

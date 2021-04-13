@@ -1,5 +1,10 @@
 # MagicMirror² JokeAPI module
-This is a module for `MagicMirror²`; the purpose of the module is to show you jokes from the JokeAPI.
+This is a module for `MagicMirror²`; the purpose of the module is to show you jokes from the V2 JokeAPI.
+
+
+### Preview
+![Screenshot](screenshot.png)
+
 
 ## Installation
 1.  Clone this repository into your MagicMirror `modules` folder.
@@ -8,25 +13,32 @@ This is a module for `MagicMirror²`; the purpose of the module is to show you j
 {
     module: 'MMM-JokeAPI',
     position: 'middle_center',
+}
+```
+You can use more detailed configuration like these; See the below section.
+```
+{
+    module: 'MMM-JokeAPI',
+    position: 'middle_center',
     config: {
-        category: "Programming"
+        lang: "en",
+        category: "Programming,Miscellaneous",
+        blacklistFlags: "nsfw",
+        safeMode: true,
     }
 }
 ```
-
-### Preview
-![Screenshot](screenshot.png)
-
-
 
 ## Configuration options
 
 | Option                 | Description
 |------------------------|-----------
-| `category`          | The list of module names that are controlled by this module.<br>Possible values:<br>1.  `Programming`<br>2.  `Miscellaneous`<br>3.  `Dark`<br>4.  `Any`<br><br> **Type:** `string` <br>**Default value:** `Programming`
-| `fetchInterval`| How often (in milliseconds) a new joke should be fetched.<br><br> **Type:** `number` <br>**Default value:** `10 * 1000`
-
+| `category`             | Joke Categories.<br><br>Possible values:`Any, Miscellaneous, Dark, Programming, Pun, Spooky, Christmas`<br><br> **Type:** `string` <br>**Default value:** `Any`<br>Multiple catagories can be used at once, just seperate them with commas <br><br> **Example:** `category: "Programming,Miscellaneous,Pun",`
+| `fetchInterval`        | How often (in milliseconds) a new joke should be fetched.<br><br> **Type:** `number` <br>**Default value:** `10 * 1000`
+| `lang`                 | Language the jokes are in.<br><br> Current languages suported are `cs, de, en, es, fr, pt`<br><br>**Type:** `string` <br>**Default value:** `en`<br><br> **Example:** `lang: "en",`
+| `blacklistFlags`       | Prevent jokes of this type.<br><br> These are all the available flags: `nsfw, religious, political, racist, sexist, explicit`<br><br> **Type:** `string` <br>**Default value:** `NULL`<br>Multiple blacklistFlags can be set at one, just seperate them with commas <br><br> **Example:** `blacklistFlags: "nsfw,religious",`
+| `safeMode`             | If enabled, JokeAPI will try its best to serve only jokes that are considered safe for everyone. Unsafe jokes are those who can be considered explicit in any way, either through the used language, its references or its blacklist flags. Jokes from the category Dark are also generally marked as unsafe. <br><br>**Type:** `bool` <br>**Default value:** `false`<br><br> **Example:** `safeMode: true,`
 
 #### Credits
 MagicMirror²:   [MagicMirror²](https://github.com/MichMich/MagicMirror)   
-JokeAPI:    [JokeAPI](https://sv443.net/jokeapi)
+JokeAPI:    [V2 JokeAPI](https://v2.jokeapi.dev/)
